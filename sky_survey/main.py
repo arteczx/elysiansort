@@ -62,11 +62,11 @@ for i, wavelength in enumerate(wavelengths):
         print(f"Saved FITS file: {fits_path}")
 
     # Menentukan skala dan pemrosesan gambar
-    scaled_image = vis.sqrt_stretch(vis.AsinhStretch(0.2))(image_data)
+    scaled_image = vis.SqrtStretch()(vis.AsinhStretch(0.2)(image_data))
 
     # Memplot gambar
-    axs[i].imshow(scaled_image, cmap='gray')
-    axs[i].set_title(f'Wavelength: {wavelength}')
+    axs.imshow(scaled_image, cmap='gray')
+    axs.set_title(f'Wavelength: {wavelength}')
 
     # Menutup file FITS
     hdu.close()
